@@ -6,5 +6,3 @@ function sayhello() {
     }
     console.log(num1);
 }
-
-sa
