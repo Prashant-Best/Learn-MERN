@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling Demo</title>
+    <link rel="stylesheet" href="eventstyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Event Bubbling Example</h1>
+        <p>Click the child box to see how events travel from child to parent to grandparent.</p>
+
+        <div id="grandparent">
+            <div id="parent">
+                <div id="child">Click me</div>
+            </div>
+        </div>
+
+        <div id="log"></div>
+    </div>
+
+    <script src="event.js"></script>
+</body>
+</html>

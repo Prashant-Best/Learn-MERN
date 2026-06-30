@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 30px;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+#grandparent, #parent, #child {
+    border: 2px solid #333;
+    border-radius: 10px;
+    margin: 15px auto;
+    padding: 20px;
+    cursor: pointer;
+}
+
+#grandparent {
+    background: #cce5ff;
+    width: 300px;
+    height: 220px;
+}
+
+#parent {
+    background: #d4edda;
+    width: 220px;
+    height: 140px;
+}
+
+#child {
+    background: #f8d7da;
+    width: 120px;
+    height: 60px;
+    line-height: 60px;
+}
+
+#log {
+    margin-top: 20px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    min-height: 80px;
+}
