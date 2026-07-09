@@ -9,7 +9,7 @@ export default function Form() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    regid: ''
   })
 
   // Handle input changes dynamically
@@ -67,14 +67,14 @@ export default function Form() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="message">Message</label>
+          <label htmlFor="regid">Message</label>
           <textarea
-            id="message"
-            name="message"
-            value={formData.message}
+            id="regid"
+            name="regid"
+            value={formData.regid}
             onChange={handleChange}
-            placeholder="Type your message here..."
-            rows="5"
+            placeholder="registration id"
+            rows="1"
             required
           ></textarea>
         </div>
