@@ -3,6 +3,7 @@ import './login.css'
 
 function Login() {
   const [isSignUp, setIsSignUp] = useState(false)
+  const [theme, setTheme] = useState('light')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,7 +44,15 @@ function Login() {
   }
 
   return (
-    <div className="login-page">
+    <div className={`login-page ${theme === 'dark' ? 'dark-theme' : ''}`}>
+      <button
+        type="button"
+        className="theme-toggle"
+        onClick={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))}
+      >
+        {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+      </button>
+
       <div className="login-card">
         <h1>{isSignUp ? 'Create account' : 'Welcome back'}</h1>
         <p>{isSignUp ? 'Sign up to get started' : 'Sign in to continue to your account'}</p>

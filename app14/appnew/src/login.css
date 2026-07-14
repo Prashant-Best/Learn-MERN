@@ -23,6 +23,23 @@ body {
   display: grid;
   place-items: center;
   padding: 24px;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.login-page.dark-theme {
+  background: linear-gradient(135deg, #020617 0%, #1e293b 100%);
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 0.95rem;
 }
 
 .login-card {
@@ -124,4 +141,22 @@ button:hover {
   margin-top: 4px;
   color: #1d4ed8;
   font-weight: 600;
+}
+
+.dark-theme .login-card {
+  background: #111827;
+  color: #f9fafb;
+}
+
+.dark-theme .login-card p,
+.dark-theme .login-card label,
+.dark-theme .switch-text,
+.dark-theme .checkbox-row {
+  color: #d1d5db;
+}
+
+.dark-theme input {
+  background: #1f2937;
+  color: #f9fafb;
+  border-color: #4b5563;
 }
