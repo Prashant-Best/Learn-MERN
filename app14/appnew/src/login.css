@@ -143,6 +143,81 @@ button:hover {
   font-weight: 600;
 }
 
+.dashboard-page {
+  min-height: 100vh;
+  display: flex;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.sidebar {
+  width: 240px;
+  background: #111827;
+  color: white;
+  padding: 24px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+.sidebar li {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 24px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #6b7280;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.primary-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-card,
+.content-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card h3 {
+  margin: 8px 0 0;
+  font-size: 1.5rem;
+}
+
+.content-card ul {
+  padding-left: 18px;
+  color: #4b5563;
+}
+
 .dark-theme .login-card {
   background: #111827;
   color: #f9fafb;
