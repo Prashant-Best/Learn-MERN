@@ -50,7 +50,7 @@ function Login() {
         className="theme-toggle"
         onClick={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))}
       >
-        {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+        {theme === 'light' ? ' Dark' : 'Light'}
       </button>
 
       <div className="login-card">
