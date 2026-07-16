@@ -1,8 +1,13 @@
 import { useState } from 'react'
-import './login.css'
+import './sign-up.css'
 
-function Login() {
-  const [formData, setFormData] = useState({ email: '', password: '' })
+function SignUp({ onSignUpSuccess, onSwitchToLogin }) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  })
   const [message, setMessage] = useState('')
 
   const handleChange = (event) => {
@@ -13,21 +18,38 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    if (!formData.email || !formData.password) {
-      setMessage('Please enter both your email and password.')
+    if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
+      setMessage('Please fill out all fields.')
       return
     }
 
-    setMessage(`Welcome back, ${formData.email}!`)
+    if (formData.password !== formData.confirmPassword) {
+      setMessage('Passwords do not match.')
+      return
+    }
+
+    setMessage('')
+    onSignUpSuccess(formData.name, formData.email)
   }
 
   return (
-    <div className="login-page">
-      <div className="login-card">
-        <h1>Welcome back</h1>
-        <p>Sign in to continue to your account</p>
+    <div className="auth-page">
+      <div className="auth-card">
+        <div className="auth-badge">Create Account</div>
+        <h1>Start your journey</h1>
+        <p>Create an account to access the dashboard</p>
 
-        <form onSubmit={handleSubmit}>
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <label htmlFor="name">Full Name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Enter your full name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+
           <label htmlFor="email">Email</label>
           <input
             id="email"
@@ -43,21 +65,32 @@ function Login() {
             id="password"
             name="password"
             type="password"
-            placeholder="Enter your password"
+            placeholder="Create a password"
             value={formData.password}
             onChange={handleChange}
           />
 
-          <div className="login-row">
-            <label className="checkbox-row">
-              <input type="checkbox" />
-              <span>Remember me</span>
-            </label>
-            <a href="#">Forgot password?</a>
-            <a href="#">Sign Up</a>
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input
+            id="confirmPassword"
+            name="confirmPassword"
+            type="password"
+            placeholder="Confirm your password"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+          />
+
+          <button className="primary-btn" type="submit">
+            Sign Up
+          </button>
+
+          <div className="switch-row">
+            <span>Already have an account?</span>
+            <button type="button" className="link-btn" onClick={onSwitchToLogin}>
+              Log In
+            </button>
           </div>
 
-          <button type="submit">Log In</button>
           {message ? <p className="status-message">{message}</p> : null}
         </form>
       </div>
@@ -65,4 +98,4 @@ function Login() {
   )
 }
 
-export default Login
+export default SignUp

@@ -1,21 +1,23 @@
-import './login.css'
+import './dashboard.css'
 
-function Dashboard() {
+function Dashboard({ user, onLogout }) {
+  const name = user?.name || user?.email?.split('@')[0] || 'there'
+
   const stats = [
-    { title: 'Total Users', value: '1,240' },
+    { title: 'Active Users', value: '1,240' },
     { title: 'Revenue', value: '$24K' },
-    { title: 'Orders', value: '320' },
-    { title: 'Feedback', value: '85' },
+    { title: 'Growth', value: '+18%' },
   ]
 
   return (
     <div className="dashboard-page">
       <aside className="sidebar">
-        <h2>My Dashboard</h2>
+        <h2>Northstar</h2>
+        <p className="sidebar-text">Analytics dashboard</p>
         <ul>
-          <li>Overview</li>
-          <li>About US</li>
+          <li className="active">Overview</li>
           <li>Reports</li>
+          <li>Team</li>
           <li>Settings</li>
         </ul>
       </aside>
@@ -24,10 +26,21 @@ function Dashboard() {
         <header className="dashboard-header">
           <div>
             <p className="eyebrow">Welcome back</p>
-            <h1>Here’s your summary</h1>
+            <h1>Hello, {name}</h1>
           </div>
-          <button type="button" className="primary-btn">+ New Report</button>
+          <button type="button" className="logout-btn" onClick={onLogout}>
+            Logout
+          </button>
         </header>
+
+        <section className="hero-panel">
+          <div>
+            <p className="hero-tag">Performance Overview</p>
+            <h2>Your business is growing steadily.</h2>
+            <p>Track your latest activity, conversions, and customer engagement in one place.</p>
+          </div>
+          <img src="/dashboard-illustration.svg" alt="Dashboard illustration" className="hero-image" />
+        </section>
 
         <section className="stats-grid">
           {stats.map((item) => (
@@ -38,12 +51,12 @@ function Dashboard() {
           ))}
         </section>
 
-        <section className="content-card">
+        <section className="activity-card">
           <h3>Recent Activity</h3>
           <ul>
-            <li>New user signed up 10 minutes ago</li>
-            <li>Payment processed successfully</li>
-            <li>Weekly report generated</li>
+            <li>New client onboarding completed</li>
+            <li>Weekly report shared with the team</li>
+            <li>Customer retention improved this month</li>
           </ul>
         </section>
       </main>

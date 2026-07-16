@@ -1,15 +1,8 @@
 import { useState } from 'react'
 import './login.css'
 
-function Login() {
-  const [isSignUp, setIsSignUp] = useState(false)
-  const [theme, setTheme] = useState('light')
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  })
+function Login({ onLoginSuccess, onSwitchToSignUp }) {
+  const [formData, setFormData] = useState({ email: '', password: '' })
   const [message, setMessage] = useState('')
 
   const handleChange = (event) => {
@@ -20,58 +13,23 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    if (isSignUp) {
-      if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
-        setMessage('Please fill out all fields to create your account.')
-        return
-      }
-
-      if (formData.password !== formData.confirmPassword) {
-        setMessage('Passwords do not match.')
-        return
-      }
-
-      setMessage(`Account created for ${formData.email}!`)
-      return
-    }
-
     if (!formData.email || !formData.password) {
       setMessage('Please enter both your email and password.')
       return
     }
 
-    setMessage(`Welcome back, ${formData.email}!`)
+    setMessage('')
+    onLoginSuccess(formData.email)
   }
 
   return (
-    <div className={`login-page ${theme === 'dark' ? 'dark-theme' : ''}`}>
-      <button
-        type="button"
-        className="theme-toggle"
-        onClick={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))}
-      >
-        {theme === 'light' ? ' Dark' : 'Light'}
-      </button>
+    <div className="auth-page">
+      <div className="auth-card">
+        <div className="auth-badge">Secure Access</div>
+        <h1>Welcome back</h1>
+        <p>Sign in to continue to your workspace</p>
 
-      <div className="login-card">
-        <h1>{isSignUp ? 'Create account' : 'Welcome back'}</h1>
-        <p>{isSignUp ? 'Sign up to get started' : 'Sign in to continue to your account'}</p>
-
-        <form onSubmit={handleSubmit}>
-          {isSignUp ? (
-            <>
-              <label htmlFor="name">Full Name</label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Enter your full name"
-                value={formData.name}
-                onChange={handleChange}
-              />
-            </>
-          ) : null}
-
+        <form className="auth-form" onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>
           <input
             id="email"
@@ -92,43 +50,16 @@ function Login() {
             onChange={handleChange}
           />
 
-          {isSignUp ? (
-            <>
-              <label htmlFor="confirmPassword">Confirm Password</label>
-              <input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                placeholder="Confirm your password"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-              />
-            </>
-          ) : (
-            <div className="login-row">
-              <label className="checkbox-row">
-                <input type="checkbox" />
-                <span>Remember me</span>
-              </label>
-              <a href="#">Forgot password?</a>
-            </div>
-          )}
+          <button className="primary-btn" type="submit">
+            Log In
+          </button>
 
-          <button type="submit">{isSignUp ? 'Sign Up' : 'Log In'}</button>
-
-          <p className="switch-text">
-            {isSignUp ? 'Already have an account?' : "Don't have an account?"}
-            <button
-              type="button"
-              className="text-button"
-              onClick={() => {
-                setIsSignUp((prev) => !prev)
-                setMessage('')
-              }}
-            >
-              {isSignUp ? 'Log In' : 'Sign Up'}
+          <div className="switch-row">
+            <span>Don&apos;t have an account?</span>
+            <button type="button" className="link-btn" onClick={onSwitchToSignUp}>
+              Sign Up
             </button>
-          </p>
+          </div>
 
           {message ? <p className="status-message">{message}</p> : null}
         </form>
