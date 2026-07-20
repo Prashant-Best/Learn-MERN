@@ -18,8 +18,14 @@ function Login({ onLoginSuccess, onSwitchToSignUp }) {
       return
     }
 
+    const success = onLoginSuccess(formData.email, formData.password)
+
+    if (!success) {
+      setMessage('Invalid email or password. Try signing up first.')
+      return
+    }
+
     setMessage('')
-    onLoginSuccess(formData.email)
   }
 
   return (

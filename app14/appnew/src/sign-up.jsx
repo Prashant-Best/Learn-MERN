@@ -28,8 +28,14 @@ function SignUp({ onSignUpSuccess, onSwitchToLogin }) {
       return
     }
 
+    const success = onSignUpSuccess(formData.name, formData.email, formData.password)
+
+    if (!success) {
+      setMessage('An account with this email already exists.')
+      return
+    }
+
     setMessage('')
-    onSignUpSuccess(formData.name, formData.email)
   }
 
   return (
