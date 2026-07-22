@@ -31,13 +31,7 @@ export default function Form() {
   return (
     <div className="form-container">
       {/* Optional Brand/Logo Header */}
-      <div className="form-header">
-        <img src={heroImg} className="base-logo" width="50" alt="" />
-        <img src={reactLogo} className="tech-logo" width="30" alt="React" />
-        <img src={viteLogo} className="tech-logo" width="30" alt="Vite" />
-        <h2>Get in Touch</h2>
-      </div>
-
+     
       {/* Main Form */}
       <form onSubmit={handleSubmit} className="custom-form">
         <div className="form-group">
@@ -67,7 +61,7 @@ export default function Form() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="regid">Message</label>
+          <label htmlFor="regid">Regid</label>
           <textarea
             id="regid"
             name="regid"

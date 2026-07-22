@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "password": "password123",
+        "job": "Software Engineer",
+        "address": "123 Main St, Anytown, USA"
+    }
+    
+]

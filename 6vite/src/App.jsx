@@ -4,7 +4,7 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 
-export default function App() {
+function App() {
   const [count, setCount] = useState(0)
 
   return (
@@ -21,29 +21,13 @@ export default function App() {
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
         </div>
-
-        {/* Displaying the current count */}
-        <div className="counter-display" style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: '10px 0' }}>
+        <button
+          type="button"
+          className="counter"
+          onClick={() => setCount((count) => count + 1)}
+        >
           Count is {count}
-        </div>
-
-        {/* Buttons for Increment and Decrement */}
-        <div className="button-group" style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
-          <button
-            type="button"
-            className="counter"
-            onClick={() => setCount((prev) => prev + 1)}
-          >
-            Increment
-          </button>
-          <button
-            type="button"
-            className="counter"
-            onClick={() => setCount((prev) => prev - 1)}
-          >
-            Decrement
-          </button>
-        </div>
+        </button>
       </section>
 
       <div className="ticks"></div>
@@ -57,13 +41,13 @@ export default function App() {
           <p>Your questions, answered</p>
           <ul>
             <li>
-              <a href="https://vite.dev/" target="_blank" rel="noreferrer">
+              <a href="https://vite.dev/" target="_blank">
                 <img className="logo" src={viteLogo} alt="" />
                 Explore Vite
               </a>
             </li>
             <li>
-              <a href="https://react.dev/" target="_blank" rel="noreferrer">
+              <a href="https://react.dev/" target="_blank">
                 <img className="button-icon" src={reactLogo} alt="" />
                 Learn more
               </a>
@@ -78,7 +62,7 @@ export default function App() {
           <p>Join the Vite community</p>
           <ul>
             <li>
-              <a href="https://github.com/vitejs/vite" target="_blank" rel="noreferrer">
+              <a href="https://github.com/vitejs/vite" target="_blank">
                 <svg
                   className="button-icon"
                   role="presentation"
@@ -90,7 +74,7 @@ export default function App() {
               </a>
             </li>
             <li>
-              <a href="https://chat.vite.dev/" target="_blank" rel="noreferrer">
+              <a href="https://chat.vite.dev/" target="_blank">
                 <svg
                   className="button-icon"
                   role="presentation"
@@ -102,7 +86,7 @@ export default function App() {
               </a>
             </li>
             <li>
-              <a href="https://x.com/vite_js" target="_blank" rel="noreferrer">
+              <a href="https://x.com/vite_js" target="_blank">
                 <svg
                   className="button-icon"
                   role="presentation"
@@ -114,7 +98,7 @@ export default function App() {
               </a>
             </li>
             <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank" rel="noreferrer">
+              <a href="https://bsky.app/profile/vite.dev" target="_blank">
                 <svg
                   className="button-icon"
                   role="presentation"
@@ -134,3 +118,5 @@ export default function App() {
     </>
   )
 }
+
+export default App
